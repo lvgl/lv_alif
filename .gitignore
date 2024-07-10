@@ -1,0 +1,6 @@
+tmp/
+out/
+RTE/
+*.yml
+*.cprj
+*.clangd

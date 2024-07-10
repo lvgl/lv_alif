@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.h": "c",
+    },
+
+    "cmake.configureOnOpen": false,
+
+    "cortex-debug.variableUseNaturalFormat": false,
+    "C_Cpp.dimInactiveRegions": false,
+}
