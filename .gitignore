@@ -3,3 +3,4 @@ out/
 RTE/
 *.yml
 *.cprj
+*.clangd

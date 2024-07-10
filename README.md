@@ -30,9 +30,9 @@ Benchmark Summary: LVGL v9.1.0, M55 HP core, D/AVE 2D, 60FPS display framerate
 
 ## Requirements
 This application is built on [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template).
+Please make sure you have setup your VSCode and other tools and environment based on this template and test it out by building and running the application.
 
 The required software setup consists of VSCode, Git, CMake, cmsis-toolbox, Arm GNU toolchain and Alif tools.
-Please refer to the [Getting Started Guide](https://alifsemi.com/download/AUGD0012) for more details.
 
 This app also requires following CMSIS packs to be installed and added to the project:
   * `ARM::CMSIS@5.9.0` (https://github.com/ARM-software/CMSIS_5/releases/tag/5.9.0)
@@ -49,11 +49,19 @@ The default hardware is [Alif Ensemble DevKit Gen 2](https://alifsemi.com/suppor
 ## Get started
 To build the app you need to clone this repository:
 ```
-git clone --recursive https://github.com/alifsemi/alif_m55-lvgl
+git clone --recursive org-164082917@github.com:AlifSemi-Sirin/alif_m55_lvgl.git
 ```
 
-After setting up the environment according to the [Getting Started Guide](https://alifsemi.com/download/AUGD0012) you can select **File->Open Folder** from VSCode and press **F1** and start choosing from the preset build tasks.
+After setting up the environment according to the [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template) you can select **File->Open Folder** from VSCode and press **F1** and start choosing from the preset build tasks.
 
 1. **F1** --> Tasks:Run Task --> First time pack installation
-2. **F1** --> Tasks:Run Task --> Generate and Build with csolution + cbuild
+2. **F1** --> Tasks:Run Task --> cmsis-csolution.build:Build (Better to do this from the CMSIS Extension Build (hammer icon))
 3. **F1** --> Tasks:Run Task --> Program with Security Toolkit
+
+#### Dave2DDriver and LVGL_DAVE2D packs installation
+If `AlifSemiconductor::Dave2DDriver@1.0.0` and `AlifSemiconductor::LVGL_DAVE2D@1.0.0` packs are in the private repositories, `First time pack installation` script is not able to install it authomaticaly, so manual actions required:
+1. Download `AlifSemiconductor.Dave2DDriver.1.0.0.pack` from https://github.com/AlifSemi-Sirin/alif_dave2d_driver
+2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` from https://github.com/AlifSemi-Sirin/alif_lvgl_dave2d
+3. Open VS Code Terminal: **Terminal** --> **New terminal**
+4. Enter the directory where `AlifSemiconductor.Dave2DDriver.1.0.0.pack` and `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` are located
+5. Execute commands `cpackget add AlifSemiconductor.Dave2DDriver.1.0.0.pack; cpackget add AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack`
