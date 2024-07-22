@@ -49,7 +49,7 @@ The default hardware is [Alif Ensemble DevKit Gen 2](https://alifsemi.com/suppor
 ## Get started
 To build the app you need to clone this repository:
 ```
-git clone --recursive org-164082917@github.com:AlifSemi-Sirin/alif_m55_lvgl.git
+git clone --recursive https://github.com/alifsemi/alif_m55-lvgl.git
 ```
 
 After setting up the environment according to the [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template) you can select **File->Open Folder** from VSCode and press **F1** and start choosing from the preset build tasks.
@@ -60,8 +60,8 @@ After setting up the environment according to the [VSCode Getting Started Templa
 
 #### Dave2DDriver and LVGL_DAVE2D packs installation
 If `AlifSemiconductor::Dave2DDriver@1.0.0` and `AlifSemiconductor::LVGL_DAVE2D@1.0.0` packs are in the private repositories, `First time pack installation` script is not able to install it authomaticaly, so manual actions required:
-1. Download `AlifSemiconductor.Dave2DDriver.1.0.0.pack` from https://github.com/AlifSemi-Sirin/alif_dave2d_driver
-2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` from https://github.com/AlifSemi-Sirin/alif_lvgl_dave2d
+1. Download `AlifSemiconductor.Dave2DDriver.1.0.0.pack` from https://github.com/alifsemi/alif_dave2d-driver/releases/download/v1.0.0/AlifSemiconductor.Dave2DDriver.1.0.0.pack
+2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` from https://github.com/alifsemi/alif_lvgl-dave2d/releases/download/v1.0.0/AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack
 3. Open VS Code Terminal: **Terminal** --> **New terminal**
 4. Enter the directory where `AlifSemiconductor.Dave2DDriver.1.0.0.pack` and `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` are located
 5. Execute commands `cpackget add AlifSemiconductor.Dave2DDriver.1.0.0.pack; cpackget add AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack`
