@@ -8,7 +8,10 @@
  *
  */
 
+#if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
+
 #include <stdbool.h>
+#include <string.h>
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
 #include "task.h"
@@ -60,3 +63,5 @@ void vApplicationIdleHook(void)
    }
 }
 #endif
+
+#endif // LV_OS_FREERTOS

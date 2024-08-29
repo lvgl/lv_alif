@@ -715,8 +715,10 @@
     /*1: Show CPU usage and FPS count
      * Requires `LV_USE_SYSMON = 1`*/
     #define LV_USE_PERF_MONITOR 1
-    /*Report idle percentage from FreeRTOS*/
-    #define LV_SYSMON_GET_IDLE freertos_get_idle_percent
+    #if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
+        /*Report idle percentage from FreeRTOS*/
+        #define LV_SYSMON_GET_IDLE freertos_get_idle_percent
+    #endif
     #if LV_USE_PERF_MONITOR
         #define LV_USE_PERF_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
 

@@ -26,17 +26,20 @@
 #define printf(fmt, ...) (0)
 #endif
 
+// LVGL tick timer period
+const uint32_t LVGL_TICK_TIME_MS = 1;
+
+#if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
 #include "task.h"
 #include "timers.h"
 
-// LVGL tick timer period
-const uint32_t LVGL_TICK_TIME_MS = 1;
 // LVGL tick timer handle
 TimerHandle_t lvgl_tick_timer_handle = NULL;
 // LVGL task handle
 TaskHandle_t lvgl_task_handle = NULL;
+#endif
 
 void clock_init()
 {
@@ -55,12 +58,20 @@ void clock_init()
     }
 }
 
+#if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
 void lvgl_tick_timer_callback(TimerHandle_t xTimer)
 {
     (void) xTimer;
 
     lv_tick_inc(LVGL_TICK_TIME_MS);
 }
+#else
+#define SYSTICKS_PER_SECOND    1000
+void SysTick_Handler(void)
+{
+    lv_tick_inc(LVGL_TICK_TIME_MS);
+}
+#endif
 
 void lvgl_thread(void *pvParam)
 {
@@ -81,8 +92,12 @@ void lvgl_thread(void *pvParam)
 
     while (true) {
         uint32_t ms_till_next_run = lv_timer_handler();
+        #if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
         const TickType_t xDelay = ms_till_next_run/portTICK_PERIOD_MS;
         vTaskDelay(xDelay);
+        #else
+        sys_busy_loop_us(ms_till_next_run*1000);
+        #endif
         BOARD_LED1_Control(BOARD_LED_STATE_TOGGLE);
     }
 }
@@ -96,6 +111,7 @@ void main (void)
     tracelib_init(NULL, NULL);
 #endif
 
+#if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
     // Create application main thread
     if (xTaskCreate(lvgl_thread, "LVGL", 2048, NULL,
                     tskIDLE_PRIORITY+1, &lvgl_task_handle) != pdPASS) {
@@ -115,4 +131,10 @@ void main (void)
 
     // Start thread execution
     vTaskStartScheduler();
+#else
+    // Initialize SysTick timer as LVGL tick timer
+    SysTick_Config(SystemCoreClock/(LVGL_TICK_TIME_MS*SYSTICKS_PER_SECOND));
+    // Call LVGL thread function directly
+    lvgl_thread(NULL);
+#endif
 }

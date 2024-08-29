@@ -35,12 +35,12 @@ Please make sure you have setup your VSCode and other tools and environment base
 The required software setup consists of VSCode, Git, CMake, cmsis-toolbox, Arm GNU toolchain and Alif tools.
 
 This app also requires following CMSIS packs to be installed and added to the project:
-  * `ARM::CMSIS@5.9.0` (https://github.com/ARM-software/CMSIS_5/releases/tag/5.9.0)
+  * `ARM::CMSIS@>=5.9.0` (https://github.com/ARM-software/CMSIS_5/releases/tag/5.9.0)
   * `ARM::CMSIS-FreeRTOS@10.5.1` (https://github.com/ARM-software/CMSIS-FreeRTOS/releases/tag/v10.5.1)
   * `LVGL::lvgl@9.1.0` (https://github.com/lvgl/lvgl/tree/release/v9.1/env_support/cmsis-pack)
-  * `AlifSemiconductor::Ensemble@1.1.1` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases/tag/v1.1.1)
-  * `AlifSemiconductor::Dave2DDriver@1.0.0` (https://github.com/alifsemi/alif_dave2d-driver)
-  * `AlifSemiconductor::LVGL_DAVE2D@1.0.0` (https://github.com/alifsemi/alif_lvgl-dave2d)
+  * `AlifSemiconductor::Ensemble@>=1.1.1` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases/tag/v1.1.1)
+  * `AlifSemiconductor::Dave2DDriver@1.0.1` (https://github.com/alifsemi/alif_dave2d-driver)
+  * `AlifSemiconductor::LVGL_DAVE2D@1.0.1` (https://github.com/alifsemi/alif_lvgl-dave2d)
 
 By default, these packs are installed VS Code `First time pack installation` script (see below).
 
@@ -59,9 +59,9 @@ After setting up the environment according to the [VSCode Getting Started Templa
 3. **F1** --> Tasks:Run Task --> Program with Security Toolkit
 
 #### Dave2DDriver and LVGL_DAVE2D packs installation
-If `AlifSemiconductor::Dave2DDriver@1.0.0` and `AlifSemiconductor::LVGL_DAVE2D@1.0.0` packs are in the private repositories, `First time pack installation` script is not able to install it authomaticaly, so manual actions required:
-1. Download `AlifSemiconductor.Dave2DDriver.1.0.0.pack` from https://github.com/alifsemi/alif_dave2d-driver/releases/download/v1.0.0/AlifSemiconductor.Dave2DDriver.1.0.0.pack
-2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` from https://github.com/alifsemi/alif_lvgl-dave2d/releases/download/v1.0.0/AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack
+If you need to install `AlifSemiconductor::Dave2DDriver@1.0.1` and `AlifSemiconductor::LVGL_DAVE2D@1.0.1` manually, follow next steps:
+1. Download `AlifSemiconductor.Dave2DDriver.1.0.1.pack` from https://github.com/alifsemi/alif_dave2d-driver
+2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack` from https://github.com/alifsemi/alif_lvgl-dave2d
 3. Open VS Code Terminal: **Terminal** --> **New terminal**
-4. Enter the directory where `AlifSemiconductor.Dave2DDriver.1.0.0.pack` and `AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack` are located
-5. Execute commands `cpackget add AlifSemiconductor.Dave2DDriver.1.0.0.pack; cpackget add AlifSemiconductor.LVGL_DAVE2D.1.0.0.pack`
+4. Enter the directory where `AlifSemiconductor.Dave2DDriver.1.0.1.pack` and `AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack` are located
+5. Execute commands `cpackget add AlifSemiconductor.Dave2DDriver.1.0.1.pack; cpackget add AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack`

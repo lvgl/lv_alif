@@ -31,11 +31,11 @@ solution:
       define:
         - "CORE_M55_HP"
   packs:
-    - pack: AlifSemiconductor::Ensemble@1.1.1
-    - pack: ARM::CMSIS@5.9.0
+    - pack: AlifSemiconductor::Ensemble@>=1.1.1
+    - pack: ARM::CMSIS@>=5.9.0
     - pack: ARM::CMSIS-FreeRTOS@10.5.1
     - pack: LVGL::lvgl@9.1.0
-    - pack: AlifSemiconductor::Dave2DDriver@1.0.0
-    - pack: AlifSemiconductor::LVGL_DAVE2D@1.0.0
+    - pack: AlifSemiconductor::Dave2DDriver@1.0.1
+    - pack: AlifSemiconductor::LVGL_DAVE2D@1.0.1
   projects:
     - project: app.cproject.yaml

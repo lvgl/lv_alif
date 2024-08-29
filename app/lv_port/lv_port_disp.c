@@ -20,15 +20,12 @@
 #include "dave_driver.h"
 #include "lv_draw_dave2d_utils.h"
 
-#define USE_EVT_GROUP
-
-#define USE_VSYNC
-
-#if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+#if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
 #include "FreeRTOS.h"
 #include "FreeRTOSConfig.h"
 #include "event_groups.h"
-#endif
+#define USE_EVT_GROUP
+#endif // LV_OS_FREERTOS
 
 /*********************
  *      DEFINES
@@ -49,7 +46,7 @@
 #error "The LV_COLOR_DEPTH and RTE_CDC200_PIXEL_FORMAT must match."
 #endif
 
-#if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+#if defined(USE_EVT_GROUP)
 #define EVENT_DISP_BUFFER_READY     ( 1 << 0 )
 #define EVENT_DISP_BUFFER_CHANGED   ( 1 << 1 )
 #endif
@@ -104,10 +101,10 @@ static ARM_DRIVER_CDC200 *CDCdrv = &Driver_CDC200;
 
 static volatile bool disp_flush_enabled = true;
 
-#if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+#if defined(USE_EVT_GROUP)
 static EventGroupHandle_t dispEventGroupHandle = NULL;
 #else
-static volatile bool disp_buf_ready = false;
+static volatile bool disp_buf_ready = true;
 static volatile bool disp_buf_changed = false;
 #endif
 
@@ -121,7 +118,7 @@ static volatile bool disp_buf_changed = false;
 
 void lv_port_disp_init(void)
 {
-    #if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+    #if defined(USE_EVT_GROUP)
     // Create event group to sync display states
     dispEventGroupHandle = xEventGroupCreate();
     #endif
@@ -131,10 +128,12 @@ void lv_port_disp_init(void)
      * -----------------------*/
     disp_init();
 
+#if defined(LV_USE_OS) && (LV_USE_OS == LV_OS_FREERTOS)
     /*-------------------------
      * Set display interrupt priority to FreeRTOS kernel level
      * -----------------------*/
     NVIC_SetPriority(CDC_SCANLINE0_IRQ_IRQn, configKERNEL_INTERRUPT_PRIORITY);
+#endif
 
 #if (D1_MEM_ALLOC == D1_MALLOC_D0LIB)
     /*-------------------------
@@ -239,8 +238,7 @@ static void disp_flush(lv_display_t * disp_drv, const lv_area_t * area, uint8_t 
         //                * lv_color_format_get_size(lv_display_get_color_format(disp_drv));
         //SCB_CleanInvalidateDCache_by_Addr(px_map, size);
 
-#ifdef USE_VSYNC
-        #if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+        #if defined(USE_EVT_GROUP)
         xEventGroupClearBits(dispEventGroupHandle, EVENT_DISP_BUFFER_READY);
         #else
         disp_buf_ready = false;
@@ -248,14 +246,11 @@ static void disp_flush(lv_display_t * disp_drv, const lv_area_t * area, uint8_t 
 
         CDCdrv->Control(CDC200_FRAMEBUF_UPDATE_VSYNC, (uint32_t)px_map);
 
-        #if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+        #if defined(USE_EVT_GROUP)
         xEventGroupSetBits(dispEventGroupHandle, EVENT_DISP_BUFFER_CHANGED);
         #else
         disp_buf_changed = true;
         #endif
-#else
-        CDCdrv->Control(CDC200_FRAMEBUF_UPDATE, (uint32_t)px_map);
-#endif
     }
 }
 
@@ -263,14 +258,14 @@ static void disp_flush(lv_display_t * disp_drv, const lv_area_t * area, uint8_t 
  */
 static void disp_flush_wait(lv_display_t * disp)
 {
-#ifdef USE_VSYNC
-    #if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+#if defined(USE_EVT_GROUP)
     xEventGroupWaitBits(dispEventGroupHandle, EVENT_DISP_BUFFER_READY,
                         pdFALSE, pdFALSE, (100/portTICK_PERIOD_MS));
-    #else
-    while (!disp_buf_ready)
-        sys_busy_loop_us(33);
-    #endif
+
+#else
+    while (!disp_buf_ready) {
+        sys_busy_loop_us(3300);
+    }
 #endif
 }
 
@@ -279,7 +274,7 @@ static void disp_flush_wait(lv_display_t * disp)
 static void disp_callback(uint32_t event)
 {
     if (event & ARM_CDC_SCANLINE0_EVENT) {
-        #if (LV_USE_OS == LV_OS_FREERTOS) && defined(USE_EVT_GROUP)
+        #if defined(USE_EVT_GROUP)
         if (xEventGroupGetBitsFromISR(dispEventGroupHandle)
            & EVENT_DISP_BUFFER_CHANGED) {
             xEventGroupClearBitsFromISR(
