@@ -6,5 +6,4 @@
     "cmake.configureOnOpen": false,
 
     "cortex-debug.variableUseNaturalFormat": false,
-    "C_Cpp.dimInactiveRegions": false,
 }

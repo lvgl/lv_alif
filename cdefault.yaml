@@ -1,18 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Open-CMSIS-Pack/devtools/tools/projmgr/2.3.0/tools/projmgr/schemas/cdefault.schema.json
 default:
-  # GCC is the default compiler, override in each respective cproject or in csolution
   compiler: GCC
-
   misc:
-    - Link:
-      - --entry=Reset_Handler
-
     - for-compiler: GCC
       C:
         - -std=c99
         - -fdata-sections
+
       Link:
         - --specs=nosys.specs
+        - --entry=Reset_Handler
         - -Wl,-Map=linker.map,--cref,-print-memory-usage,--gc-sections,--no-warn-rwx-segments
         # generate linker map
         # output a cross reference table
@@ -29,7 +26,9 @@ default:
         - --vectorize
         - --char-is-unsigned
         - --dlib_config normal
+
       Link:
+        - --entry=Reset_Handler
         - --map linker.map
 
     - for-compiler: AC6
@@ -38,6 +37,7 @@ default:
         - -fdata-sections
         - -Wno-license-management
       Link:
+        - --entry=Reset_Handler
         - --map
         - --verbose
         - --info=sizes,totals,unused,summarysizes

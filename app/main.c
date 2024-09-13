@@ -102,7 +102,7 @@ void lvgl_thread(void *pvParam)
     }
 }
 
-void main (void)
+int main (void)
 {
     // System Initialization
     SystemCoreClockUpdate();
@@ -137,4 +137,6 @@ void main (void)
     // Call LVGL thread function directly
     lvgl_thread(NULL);
 #endif
+
+    return 0;
 }

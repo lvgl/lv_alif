@@ -49,7 +49,7 @@ The default hardware is [Alif Ensemble DevKit Gen 2](https://alifsemi.com/suppor
 ## Get started
 To build the app you need to clone this repository:
 ```
-git clone --recursive https://github.com/alifsemi/alif_m55-lvgl.git
+git clone --recursive https://github.com/alifsemi/alif_m55-lvgl
 ```
 
 After setting up the environment according to the [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template) you can select **File->Open Folder** from VSCode and press **F1** and start choosing from the preset build tasks.

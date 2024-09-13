@@ -59,9 +59,7 @@
         {
             "label": "Program with Security Toolkit",
             "type": "shell",
-            "options": {
-                "cwd": "${config:alif.setools.root}"
-            },
+            "options": {"cwd": "${config:alif.setools.root}"},
             "command": [
                 "./app-gen-toc -f alif-img.json;",
                 "./app-write-mram -p;",
@@ -74,9 +72,7 @@
         {
             "label": "Program with Security Toolkit (select COM port)",
             "type": "shell",
-            "options": {
-                "cwd": "${config:alif.setools.root}"
-            },
+            "options": {"cwd": "${config:alif.setools.root}"},
             "command": [
                 "./app-gen-toc -f alif-img.json;",
                 "./app-write-mram -p -d;",
@@ -89,9 +85,7 @@
         {
             "label": "Update TOC with Security Toolkit",
             "type": "shell",
-            "options": {
-                "cwd": "${config:alif.setools.root}"
-            },
+            "options": {"cwd": "${config:alif.setools.root}"},
             "command": [
                 "./app-gen-toc -f alif-img.json;",
                 "./app-write-mram -S;",
@@ -104,9 +98,7 @@
         {
             "label": "Install debug stubs with Security Toolkit",
             "type": "shell",
-            "options": {
-                "cwd": "${config:alif.setools.root}"
-            },
+            "options": {"cwd": "${config:alif.setools.root}"},
             "command": [
                 "./app-gen-toc -f ./build/config/app-cpu-stubs.json;",
                 "./app-write-mram;"
@@ -116,26 +108,12 @@
         {
             "label": "Install debug stubs with Security Toolkit (select COM port)",
             "type": "shell",
-            "options": {
-                "cwd": "${config:alif.setools.root}"
-            },
+            "options": {"cwd": "${config:alif.setools.root}"},
             "command": [
                 "./app-gen-toc -f ./build/config/app-cpu-stubs.json;",
                 "./app-write-mram -d;"
             ],
             "problemMatcher": []
-        },
-        {
-            "type": "cmsis-csolution.build",
-            "solution": "${command:cmsis-csolution.getSolutionPath}",
-            "useContextSet": true,
-            "rebuild": false,
-            "problemMatcher": [],
-            "label": "cmsis-csolution.build: Build",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
         }
     ]
 }
