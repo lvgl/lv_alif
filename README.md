@@ -35,12 +35,12 @@ Please make sure you have setup your VSCode and other tools and environment base
 The required software setup consists of VSCode, Git, CMake, cmsis-toolbox, Arm GNU toolchain and Alif tools.
 
 This app also requires following CMSIS packs to be installed and added to the project:
-  * `ARM::CMSIS@>=5.9.0` (https://github.com/ARM-software/CMSIS_5/releases/tag/5.9.0)
-  * `ARM::CMSIS-FreeRTOS@10.5.1` (https://github.com/ARM-software/CMSIS-FreeRTOS/releases/tag/v10.5.1)
+  * `ARM::CMSIS@>=5.9.0` (https://github.com/ARM-software/CMSIS_5/releases)
+  * `ARM::CMSIS-FreeRTOS@>=10.5.1` (https://github.com/ARM-software/CMSIS-FreeRTOS/releases)
   * `LVGL::lvgl@9.1.0` (https://github.com/lvgl/lvgl/tree/release/v9.1/env_support/cmsis-pack)
-  * `AlifSemiconductor::Ensemble@>=1.1.1` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases/tag/v1.1.1)
-  * `AlifSemiconductor::Dave2DDriver@1.0.1` (https://github.com/alifsemi/alif_dave2d-driver)
-  * `AlifSemiconductor::LVGL_DAVE2D@1.0.1` (https://github.com/alifsemi/alif_lvgl-dave2d)
+  * `AlifSemiconductor::Ensemble@>=1.1.1` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases)
+  * `AlifSemiconductor::Dave2DDriver@1.0.1` (https://github.com/alifsemi/alif_dave2d-driver/releases)
+  * `AlifSemiconductor::LVGL_DAVE2D@1.0.1` (https://github.com/alifsemi/alif_lvgl-dave2d/releases)
 
 By default, these packs are installed VS Code `First time pack installation` script (see below).
 
