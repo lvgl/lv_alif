@@ -38,9 +38,9 @@ This app also requires following CMSIS packs to be installed and added to the pr
   * `ARM::CMSIS@>=5.9.0` (https://github.com/ARM-software/CMSIS_5/releases)
   * `ARM::CMSIS-FreeRTOS@>=10.5.1` (https://github.com/ARM-software/CMSIS-FreeRTOS/releases)
   * `LVGL::lvgl@9.1.0` (https://github.com/lvgl/lvgl/tree/release/v9.1/env_support/cmsis-pack)
-  * `AlifSemiconductor::Ensemble@>=1.1.1` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases)
+  * `AlifSemiconductor::Ensemble@>=1.3.0` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases)
   * `AlifSemiconductor::Dave2DDriver@1.0.1` (https://github.com/alifsemi/alif_dave2d-driver/releases)
-  * `AlifSemiconductor::LVGL_DAVE2D@1.0.1` (https://github.com/alifsemi/alif_lvgl-dave2d/releases)
+  * `AlifSemiconductor::LVGL_DAVE2D@1.0.2` (https://github.com/alifsemi/alif_lvgl-dave2d/releases)
 
 By default, these packs are installed VS Code `First time pack installation` script (see below).
 

@@ -26,11 +26,11 @@
             "command": [
                 "cpackget init https://www.keil.com/pack/index.pidx;",
                 "cpackget add https://github.com/ARM-software/CMSIS_5/releases/download/5.9.0/ARM.CMSIS.5.9.0.pack;",
-                "cpackget add https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases/download/v1.1.1/AlifSemiconductor.Ensemble.1.1.1.pack;",
+                "cpackget add https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases/download/v1.3.0/AlifSemiconductor.Ensemble.1.3.0.pack;",
                 "cpackget add https://github.com/ARM-software/CMSIS-FreeRTOS/releases/download/v10.5.1/ARM.CMSIS-FreeRTOS.10.5.1.pack;",
                 "cpackget add https://github.com/lvgl/lvgl/raw/v9.1.0/env_support/cmsis-pack/LVGL.lvgl.9.1.0.pack;",
                 "cpackget add https://github.com/alifsemi/alif_dave2d-driver/releases/download/v1.0.1/AlifSemiconductor.Dave2DDriver.1.0.1.pack;",
-                "cpackget add https://github.com/alifsemi/alif_lvgl-dave2d/releases/download/v1.0.1/AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack;",
+                "cpackget add https://github.com/alifsemi/alif_lvgl-dave2d/releases/download/v1.0.2/AlifSemiconductor.LVGL_DAVE2D.1.0.2.pack;",
                 "cpackget list;",
                 "echo 'Pack installation has been completed'"
             ],
