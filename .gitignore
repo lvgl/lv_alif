@@ -1,6 +1,6 @@
 tmp/
 out/
-RTE/
 *.yml
+!alif.cbuild-pack.yml
 *.cprj
 *.clangd
