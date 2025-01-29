@@ -1,10 +1,21 @@
-# Alif M55 LVGL Demo
+# LVGL ported to Alif M55
 
-## Description
-[LVGL](https://github.com/lvgl/lvgl) example for Alif E7 DevKit Gen2
+## Overview
 
-This app is porting the LVGL [v9.1.0](https://github.com/lvgl/lvgl/releases/tag/v9.1.0) to Alif Cortex-M55 with D/AVE 2D GPU.
-It launches the Demo Benchmark example to measure its performance on the M55 HP and HE cores using GPU acceleration and FreeRTOS.
+This port is for the Alif Ensemble E7 AI/ML AppKit boards.
+
+Alif Semiconductor is a next-generation chip vendor making chips that come in a
+variety of configurations.
+
+The E7 AI/ML AppKit is a peripheral-rich board with the most powerful Alif Ensemble SOC.
+
+For more info about this board and Alif, see https://docs.lvgl.io/master/details/integration/chip/alif.html .
+
+## Buy
+
+You can purchase the Alif Ensemble E7 AI/ML AppKit from https://www.arrow.com/en/products/ak-e7-aiml/alif-semiconductor and https://www.mouser.com/ProductDetail/Alif-Semiconductor/AK-E7-AIML?qs=i8QVZAFTkqRflp1UcqlNNQ%3D%3D .
+
+## Benchmark
 
 Benchmark Summary: LVGL v9.1.0, M55 HP core, D/AVE 2D, 60FPS display framerate
 
@@ -28,40 +39,62 @@ Benchmark Summary: LVGL v9.1.0, M55 HP core, D/AVE 2D, 60FPS display framerate
 | Widgets demo              | 48%      | 37       | 21        | 10          | 11         |
 | All scenes avg.           | 29%      | 54       | 16        | 7           | 9          |
 
-## Requirements
-This application is built on [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template).
-Please make sure you have setup your VSCode and other tools and environment based on this template and test it out by building and running the application.
+## Specification
 
-The required software setup consists of VSCode, Git, CMake, cmsis-toolbox, Arm GNU toolchain and Alif tools.
+### CPU and Memory
+- **MCU:** Cortex-M55 400 MHz HP core, Cortex-M55 160 MHz HE core, and dual Cortex-A32 800 MHz MPU cores
+- **RAM:** 13.5 internal SRAM, 64 MB external PSRAM
+- **Flash:** 64 MB External
+- **GPU:** DAVE2D
 
-This app also requires following CMSIS packs to be installed and added to the project:
-  * `ARM::CMSIS@>=5.9.0` (https://github.com/ARM-software/CMSIS_5/releases)
-  * `ARM::CMSIS-FreeRTOS@>=10.5.1` (https://github.com/ARM-software/CMSIS-FreeRTOS/releases)
-  * `LVGL::lvgl@9.1.0` (https://github.com/lvgl/lvgl/tree/release/v9.1/env_support/cmsis-pack)
-  * `AlifSemiconductor::Ensemble@>=1.3.0` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases)
-  * `AlifSemiconductor::Dave2DDriver@1.0.1` (https://github.com/alifsemi/alif_dave2d-driver/releases)
-  * `AlifSemiconductor::LVGL_DAVE2D@1.0.2` (https://github.com/alifsemi/alif_lvgl-dave2d/releases)
+### Display and Touch
+- **Resolution:** 800x480
+- **Display Size:** 4"
+- **Interface:** MIPI
+- **Color Depth:** 16-bit
+- **Technology:** LCD
+- **DPI:** 233 px/inch
+- **Touch Pad:** Capacitive
 
-By default, these packs are installed VS Code `First time pack installation` script (see below).
+### Connectivity
+- WiFi
+- BLE
+- Camera
+- Microphones
+- Headphone
+- IMU
+- buttons
+- USB
 
-The default hardware is [Alif Ensemble DevKit Gen 2](https://alifsemi.com/support/kits/ensemble-devkit-gen2/) with display.
+## Getting started
 
-## Get started
-To build the app you need to clone this repository:
-```
-git clone --recursive https://github.com/alifsemi/alif_m55-lvgl
-```
+### Hardware setup
+- Connect the USB port marked "PRG".
 
-After setting up the environment according to the [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template) you can select **File->Open Folder** from VSCode and press **F1** and start choosing from the preset build tasks.
+### Software setup
 
-1. **F1** --> Tasks:Run Task --> First time pack installation
-2. **F1** --> Tasks:Run Task --> cmsis-csolution.build:Build (Better to do this from the CMSIS Extension Build (hammer icon))
-3. **F1** --> Tasks:Run Task --> Program with Security Toolkit
+This project uses the VS Code CMSIS Solution Extension extension for managing
+libraries, building, and debugging.
 
-#### Dave2DDriver and LVGL_DAVE2D packs installation
-If you need to install `AlifSemiconductor::Dave2DDriver@1.0.1` and `AlifSemiconductor::LVGL_DAVE2D@1.0.1` manually, follow next steps:
-1. Download `AlifSemiconductor.Dave2DDriver.1.0.1.pack` from https://github.com/alifsemi/alif_dave2d-driver
-2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack` from https://github.com/alifsemi/alif_lvgl-dave2d
-3. Open VS Code Terminal: **Terminal** --> **New terminal**
-4. Enter the directory where `AlifSemiconductor.Dave2DDriver.1.0.1.pack` and `AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack` are located
-5. Execute commands `cpackget add AlifSemiconductor.Dave2DDriver.1.0.1.pack; cpackget add AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack`
+- Install Visual Studio Code.
+- Install requirements in https://docs.lvgl.io/master/details/integration/chip/alif.html
+
+### Run the project
+- Clone this repository repository: `git clone https://github.com/lvgl/lv_alif.git`
+- Follow the instructions in https://docs.lvgl.io/master/details/integration/chip/alif.html
+
+### Debugging
+- 20-pin JLink Connector.
+- One of the two serial ports visible while the board is connected
+  by the "PRG" USB is a user application UART and can be used for debug logging
+
+## Notes
+
+Carefully follow all the instructions in https://docs.lvgl.io/master/details/integration/chip/alif.html
+
+## Contribution and Support
+
+If you find any issues with the development board feel free to open an Issue in this repository. For LVGL related issues (features, bugs, etc) please use the main [lvgl repository](https://github.com/lvgl/lvgl).
+
+If you found a bug and found a solution too please send a Pull request. If you are new to Pull requests refer to [Our Guide](https://docs.lvgl.io/master/CONTRIBUTING.html#pull-request) to learn the basics.
+
