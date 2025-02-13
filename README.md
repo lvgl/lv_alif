@@ -17,27 +17,49 @@ You can purchase the Alif Ensemble E7 AI/ML AppKit from https://www.arrow.com/en
 
 ## Benchmark
 
-Benchmark Summary: LVGL v9.1.0, M55 HP core, D/AVE 2D, 60FPS display framerate
+Benchmark Summary: LVGL v9.1.0, M55 **HP** core, D/AVE 2D, 60FPS display framerate
 
 | Name                      | Avg. CPU | Avg. FPS | Avg. time | render time | flush time |
-| ------------------------- |:--------:|:--------:|:---------:|:-----------:| ----------:|
-| Empty screen              | 14%      | 54       | 12        | 1           | 11         |
-| Moving wallpaper          | 13%      | 61       | 14        | 6           | 8          |
+| :------------------------ | :------- | :------- | :-------- | :---------- | :--------- |
+| Empty screen              | 15%      | 54       | 12        | 1           | 11         |
+| Moving wallpaper          | 14%      | 61       | 14        | 6           | 8          |
 | Single rectangle          | 1%       | 60       | 15        | 0           | 15         |
-| Multiple rectangles       | 11%      | 60       | 15        | 1           | 14         |
-| Multiple RGB images       | 23%      | 60       | 14        | 3           | 11         |
+| Multiple rectangles       | 11%      | 61       | 15        | 1           | 14         |
+| Multiple RGB images       | 24%      | 61       | 14        | 3           | 11         |
 | Multiple ARGB images      | 24%      | 60       | 13        | 6           | 7          |
-| Rotated ARGB images       | 13%      | 30       | 30        | 23          | 7          |
-| Multiple labels           | 42%      | 60       | 15        | 7           | 8          |
-| Screen sized text         | 84%      | 30       | 31        | 28          | 3          |
-| Multiple arcs             | 21%      | 61       | 13        | 2           | 11         |
+| Rotated ARGB images       | 15%      | 30       | 31        | 24          | 7          |
+| Multiple labels           | 45%      | 61       | 14        | 7           | 7          |
+| Screen sized text         | 85%      | 30       | 31        | 28          | 3          |
+| Multiple arcs             | 21%      | 60       | 13        | 2           | 11         |
 | Containers                | 15%      | 60       | 14        | 2           | 12         |
-| Containers with overlay   | 47%      | 60       | 15        | 10          | 5          |
-| Containers with opa       | 15%      | 60       | 14        | 2           | 12         |
-| Containers with opa_layer | 44%      | 56       | 16        | 9           | 7          |
-| Containers with scrolling | 53%      | 60       | 14        | 9           | 5          |
-| Widgets demo              | 48%      | 37       | 21        | 10          | 11         |
+| Containers with overlay   | 45%      | 60       | 14        | 10          | 4          |
+| Containers with opa       | 16%      | 60       | 14        | 2           | 12         |
+| Containers with opa_layer | 43%      | 56       | 16        | 9           | 7          |
+| Containers with scrolling | 56%      | 61       | 14        | 9           | 5          |
+| Widgets demo              | 48%      | 36       | 22        | 10          | 12         |
 | All scenes avg.           | 29%      | 54       | 16        | 7           | 9          |
+
+Benchmark Summary: LVGL v9.1.0, M55 **HE** core, D/AVE 2D, 60FPS display framerate
+
+| Name                      | Avg. CPU | Avg. FPS | Avg. time | render time | flush time |
+| :------------------------ | :------- | :------- | :-------- | :---------- | :--------- |
+| Empty screen              | 23%      | 54       | 13        | 3           | 10         |
+| Moving wallpaper          | 40%      | 61       | 15        | 10          | 5          |
+| Single rectangle          | 2%       | 61       | 15        | 0           | 15         |
+| Multiple rectangles       | 27%      | 61       | 15        | 4           | 11         |
+| Multiple RGB images       | 53%      | 60       | 12        | 6           | 6          |
+| Multiple ARGB images      | 56%      | 58       | 13        | 9           | 4          |
+| Rotated ARGB images       | 39%      | 30       | 30        | 23          | 7          |
+| Multiple labels           | 62%      | 30       | 30        | 18          | 12         |
+| Screen sized text         | 85%      | 12       | 79        | 68          | 11         |
+| Multiple arcs             | 54%      | 61       | 12        | 6           | 6          |
+| Containers                | 35%      | 60       | 14        | 6           | 8          |
+| Containers with overlay   | 66%      | 30       | 31        | 22          | 9          |
+| Containers with opa       | 38%      | 59       | 14        | 7           | 7          |
+| Containers with opa_layer | 84%      | 19       | 47        | 40          | 7          |
+| Containers with scrolling | 73%      | 30       | 31        | 23          | 8          |
+| Widgets demo              | 70%      | 25       | 33        | 24          | 9          |
+| All scenes avg.           | 50%      | 44       | 24        | 16          | 8          |
 
 ## Specification
 
