@@ -61,6 +61,8 @@ Benchmark Summary: LVGL v9.1.0, M55 **HE** core, D/AVE 2D, 60FPS display framera
 | Widgets demo              | 70%      | 25       | 33        | 24          | 9          |
 | All scenes avg.           | 50%      | 44       | 24        | 16          | 8          |
 
+<a href="https://www.youtube.com/watch?v=1gBxJL8BiHk"> <img src="assets/readme_video_preview.png"  width="70%"/> </a>
+
 ## Specification
 
 ### CPU and Memory
