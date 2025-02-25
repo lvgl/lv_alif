@@ -1,67 +1,124 @@
-# Alif M55 LVGL Demo
+# LVGL ported to Alif M55
 
-## Description
-[LVGL](https://github.com/lvgl/lvgl) example for Alif E7 DevKit Gen2
+## Overview
 
-This app is porting the LVGL [v9.1.0](https://github.com/lvgl/lvgl/releases/tag/v9.1.0) to Alif Cortex-M55 with D/AVE 2D GPU.
-It launches the Demo Benchmark example to measure its performance on the M55 HP and HE cores using GPU acceleration and FreeRTOS.
+This port is for the Alif Ensemble E7 AI/ML AppKit boards.
 
-Benchmark Summary: LVGL v9.1.0, M55 HP core, D/AVE 2D, 60FPS display framerate
+Alif Semiconductor is a next-generation chip vendor making chips that come in a
+variety of configurations.
+
+The E7 AI/ML AppKit is a peripheral-rich board with the most powerful Alif Ensemble SOC.
+
+For more info about this board and Alif, see https://docs.lvgl.io/master/details/integration/chip/alif.html .
+
+## Buy
+
+You can purchase the Alif Ensemble E7 AI/ML AppKit from https://www.arrow.com/en/products/ak-e7-aiml/alif-semiconductor and https://www.mouser.com/ProductDetail/Alif-Semiconductor/AK-E7-AIML?qs=i8QVZAFTkqRflp1UcqlNNQ%3D%3D .
+
+## Benchmark
+
+Benchmark Summary: LVGL v9.1.0, M55 **HP** core, D/AVE 2D, 60FPS display framerate
 
 | Name                      | Avg. CPU | Avg. FPS | Avg. time | render time | flush time |
-| ------------------------- |:--------:|:--------:|:---------:|:-----------:| ----------:|
-| Empty screen              | 14%      | 54       | 12        | 1           | 11         |
-| Moving wallpaper          | 13%      | 61       | 14        | 6           | 8          |
+| :------------------------ | :------- | :------- | :-------- | :---------- | :--------- |
+| Empty screen              | 15%      | 54       | 12        | 1           | 11         |
+| Moving wallpaper          | 14%      | 61       | 14        | 6           | 8          |
 | Single rectangle          | 1%       | 60       | 15        | 0           | 15         |
-| Multiple rectangles       | 11%      | 60       | 15        | 1           | 14         |
-| Multiple RGB images       | 23%      | 60       | 14        | 3           | 11         |
+| Multiple rectangles       | 11%      | 61       | 15        | 1           | 14         |
+| Multiple RGB images       | 24%      | 61       | 14        | 3           | 11         |
 | Multiple ARGB images      | 24%      | 60       | 13        | 6           | 7          |
-| Rotated ARGB images       | 13%      | 30       | 30        | 23          | 7          |
-| Multiple labels           | 42%      | 60       | 15        | 7           | 8          |
-| Screen sized text         | 84%      | 30       | 31        | 28          | 3          |
-| Multiple arcs             | 21%      | 61       | 13        | 2           | 11         |
+| Rotated ARGB images       | 15%      | 30       | 31        | 24          | 7          |
+| Multiple labels           | 45%      | 61       | 14        | 7           | 7          |
+| Screen sized text         | 85%      | 30       | 31        | 28          | 3          |
+| Multiple arcs             | 21%      | 60       | 13        | 2           | 11         |
 | Containers                | 15%      | 60       | 14        | 2           | 12         |
-| Containers with overlay   | 47%      | 60       | 15        | 10          | 5          |
-| Containers with opa       | 15%      | 60       | 14        | 2           | 12         |
-| Containers with opa_layer | 44%      | 56       | 16        | 9           | 7          |
-| Containers with scrolling | 53%      | 60       | 14        | 9           | 5          |
-| Widgets demo              | 48%      | 37       | 21        | 10          | 11         |
+| Containers with overlay   | 45%      | 60       | 14        | 10          | 4          |
+| Containers with opa       | 16%      | 60       | 14        | 2           | 12         |
+| Containers with opa_layer | 43%      | 56       | 16        | 9           | 7          |
+| Containers with scrolling | 56%      | 61       | 14        | 9           | 5          |
+| Widgets demo              | 48%      | 36       | 22        | 10          | 12         |
 | All scenes avg.           | 29%      | 54       | 16        | 7           | 9          |
 
-## Requirements
-This application is built on [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template).
-Please make sure you have setup your VSCode and other tools and environment based on this template and test it out by building and running the application.
+Benchmark Summary: LVGL v9.1.0, M55 **HE** core, D/AVE 2D, 60FPS display framerate
 
-The required software setup consists of VSCode, Git, CMake, cmsis-toolbox, Arm GNU toolchain and Alif tools.
+| Name                      | Avg. CPU | Avg. FPS | Avg. time | render time | flush time |
+| :------------------------ | :------- | :------- | :-------- | :---------- | :--------- |
+| Empty screen              | 23%      | 54       | 13        | 3           | 10         |
+| Moving wallpaper          | 40%      | 61       | 15        | 10          | 5          |
+| Single rectangle          | 2%       | 61       | 15        | 0           | 15         |
+| Multiple rectangles       | 27%      | 61       | 15        | 4           | 11         |
+| Multiple RGB images       | 53%      | 60       | 12        | 6           | 6          |
+| Multiple ARGB images      | 56%      | 58       | 13        | 9           | 4          |
+| Rotated ARGB images       | 39%      | 30       | 30        | 23          | 7          |
+| Multiple labels           | 62%      | 30       | 30        | 18          | 12         |
+| Screen sized text         | 85%      | 12       | 79        | 68          | 11         |
+| Multiple arcs             | 54%      | 61       | 12        | 6           | 6          |
+| Containers                | 35%      | 60       | 14        | 6           | 8          |
+| Containers with overlay   | 66%      | 30       | 31        | 22          | 9          |
+| Containers with opa       | 38%      | 59       | 14        | 7           | 7          |
+| Containers with opa_layer | 84%      | 19       | 47        | 40          | 7          |
+| Containers with scrolling | 73%      | 30       | 31        | 23          | 8          |
+| Widgets demo              | 70%      | 25       | 33        | 24          | 9          |
+| All scenes avg.           | 50%      | 44       | 24        | 16          | 8          |
 
-This app also requires following CMSIS packs to be installed and added to the project:
-  * `ARM::CMSIS@>=5.9.0` (https://github.com/ARM-software/CMSIS_5/releases)
-  * `ARM::CMSIS-FreeRTOS@>=10.5.1` (https://github.com/ARM-software/CMSIS-FreeRTOS/releases)
-  * `LVGL::lvgl@9.1.0` (https://github.com/lvgl/lvgl/tree/release/v9.1/env_support/cmsis-pack)
-  * `AlifSemiconductor::Ensemble@>=1.3.0` (https://github.com/alifsemi/alif_ensemble-cmsis-dfp/releases)
-  * `AlifSemiconductor::Dave2DDriver@1.0.1` (https://github.com/alifsemi/alif_dave2d-driver/releases)
-  * `AlifSemiconductor::LVGL_DAVE2D@1.0.2` (https://github.com/alifsemi/alif_lvgl-dave2d/releases)
+<a href="https://www.youtube.com/watch?v=1gBxJL8BiHk"> <img src="assets/readme_video_preview.png"  width="70%"/> </a>
 
-By default, these packs are installed VS Code `First time pack installation` script (see below).
+## Specification
 
-The default hardware is [Alif Ensemble DevKit Gen 2](https://alifsemi.com/support/kits/ensemble-devkit-gen2/) with display.
+### CPU and Memory
+- **MCU:** Cortex-M55 400 MHz HP core, Cortex-M55 160 MHz HE core, and dual Cortex-A32 800 MHz MPU cores
+- **RAM:** 13.5 internal SRAM, 64 MB external PSRAM
+- **Flash:** 64 MB External
+- **GPU:** DAVE2D
 
-## Get started
-To build the app you need to clone this repository:
-```
-git clone --recursive https://github.com/alifsemi/alif_m55-lvgl
-```
+### Display and Touch
+- **Resolution:** 800x480
+- **Display Size:** 4"
+- **Interface:** MIPI
+- **Color Depth:** 16-bit
+- **Technology:** LCD
+- **DPI:** 233 px/inch
+- **Touch Pad:** Capacitive
 
-After setting up the environment according to the [VSCode Getting Started Template](https://github.com/alifsemi/alif_vscode-template) you can select **File->Open Folder** from VSCode and press **F1** and start choosing from the preset build tasks.
+### Connectivity
+- WiFi
+- BLE
+- Camera
+- Microphones
+- Headphone
+- IMU
+- buttons
+- USB
 
-1. **F1** --> Tasks:Run Task --> First time pack installation
-2. **F1** --> Tasks:Run Task --> cmsis-csolution.build:Build (Better to do this from the CMSIS Extension Build (hammer icon))
-3. **F1** --> Tasks:Run Task --> Program with Security Toolkit
+## Getting started
 
-#### Dave2DDriver and LVGL_DAVE2D packs installation
-If you need to install `AlifSemiconductor::Dave2DDriver@1.0.1` and `AlifSemiconductor::LVGL_DAVE2D@1.0.1` manually, follow next steps:
-1. Download `AlifSemiconductor.Dave2DDriver.1.0.1.pack` from https://github.com/alifsemi/alif_dave2d-driver
-2. Download `AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack` from https://github.com/alifsemi/alif_lvgl-dave2d
-3. Open VS Code Terminal: **Terminal** --> **New terminal**
-4. Enter the directory where `AlifSemiconductor.Dave2DDriver.1.0.1.pack` and `AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack` are located
-5. Execute commands `cpackget add AlifSemiconductor.Dave2DDriver.1.0.1.pack; cpackget add AlifSemiconductor.LVGL_DAVE2D.1.0.1.pack`
+### Hardware setup
+- Connect the USB port marked "PRG".
+
+### Software setup
+
+This project uses the VS Code CMSIS Solution Extension extension for managing
+libraries, building, and debugging.
+
+- Install Visual Studio Code.
+- Install requirements in https://docs.lvgl.io/master/details/integration/chip/alif.html
+
+### Run the project
+- Clone this repository repository: `git clone https://github.com/lvgl/lv_alif.git`
+- Follow the instructions in https://docs.lvgl.io/master/details/integration/chip/alif.html
+
+### Debugging
+- 20-pin JLink Connector.
+- One of the two serial ports visible while the board is connected
+  by the "PRG" USB is a user application UART and can be used for debug logging
+
+## Notes
+
+Carefully follow all the instructions in https://docs.lvgl.io/master/details/integration/chip/alif.html
+
+## Contribution and Support
+
+If you find any issues with the development board feel free to open an Issue in this repository. For LVGL related issues (features, bugs, etc) please use the main [lvgl repository](https://github.com/lvgl/lvgl).
+
+If you found a bug and found a solution too please send a Pull request. If you are new to Pull requests refer to [Our Guide](https://docs.lvgl.io/master/CONTRIBUTING.html#pull-request) to learn the basics.
+
