@@ -18,7 +18,7 @@
             "Flash": "64 MB",
             "GPU": "DAVE2D",
             "Resolution": "800x480",
-            "Display Size": "4\u201d",
+            "Display Size": "4”",
             "Interface": "MIPI LCD",
             "Color Depth": "16-bit",
             "DPI": "216 px/inch",
@@ -30,6 +30,11 @@
     "urlToClone": "https://github.com/lvgl/lv_alif.git",
     "logos": [
         "https://raw.githubusercontent.com/lvgl/project-creator/master/meta/images/alif/logo.svg"
+    ],
+    "image": "https://raw.githubusercontent.com/lvgl/lv_alif/master/board_images/Alif-AK-E7-AIML.webp",
+    "buy_now_links": [
+        "https://www.arrow.com/en/products/ak-e7-aiml/alif-semiconductor",
+        "https://www.mouser.com/ProductDetail/Alif-Semiconductor/AK-E7-AIML?qs=i8QVZAFTkqRflp1UcqlNNQ%3D%3D"
     ],
     "branches": [
         "release/v9.1"
