@@ -9,7 +9,7 @@ variety of configurations.
 
 The E7 AI/ML AppKit is a peripheral-rich board with the most powerful Alif Ensemble SOC.
 
-For more info about this board and Alif, see https://docs.lvgl.io/master/details/integration/chip/alif.html .
+For more info about this board and Alif, see https://docs.lvgl.io/master/details/integration/chip_vendors/alif/overview.html .
 
 ## Buy
 
@@ -101,11 +101,11 @@ This project uses the VS Code CMSIS Solution Extension extension for managing
 libraries, building, and debugging.
 
 - Install Visual Studio Code.
-- Install requirements in https://docs.lvgl.io/master/details/integration/chip/alif.html
+- Install requirements in https://docs.lvgl.io/master/details/integration/chip_vendors/alif/overview.html
 
 ### Run the project
 - Clone this repository repository: `git clone https://github.com/lvgl/lv_alif.git`
-- Follow the instructions in https://docs.lvgl.io/master/details/integration/chip/alif.html
+- Follow the instructions in https://docs.lvgl.io/master/details/integration/chip_vendors/alif/overview.html
 
 ### Debugging
 - 20-pin JLink Connector.
@@ -114,7 +114,7 @@ libraries, building, and debugging.
 
 ## Notes
 
-Carefully follow all the instructions in https://docs.lvgl.io/master/details/integration/chip/alif.html
+Carefully follow all the instructions in https://docs.lvgl.io/master/details/integration/chip_vendors/alif/overview.html
 
 ## Contribution and Support
 
